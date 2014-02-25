@@ -22,3 +22,15 @@ Manager:
 
 Object:
     Contains the class definition for all objects used in Pong.
+
+
+Some functions:
+    Support multiple viewports. Left viewport is for AI player and right viewport is for
+human player. 
+
+    Suport game role exchange. You can hit key 'S' to exchange the role with AI player.
+
+    Suport game state pause and resume. You can hit key 'P' to toggle the game state.
+
+    Support adaptively change ball sppeed and paddle sppeed according to the number of 
+successfully hits in a row. 

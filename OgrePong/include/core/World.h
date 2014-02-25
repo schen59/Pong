@@ -30,7 +30,7 @@ public:
 	~World();
     void think(const Ogre::Real& time);
 	void switchPlayer();
-	Ball* getBall() { return mBall; }
+	Ball* getBall() const { return mBall; }
 	void getEventFrom(PongManager *pongManager);
 	Paddle* getLeftPaddle() const { return mLeftPaddle; }
 	Paddle* getRightPaddle() const { return mRightPaddle; }
@@ -40,9 +40,9 @@ public:
 	Wall* getBottomWall() const { return mBottomWall; }
 	Paddle* getLeftPlayer() const { return mLeftPlayer; }
 	Paddle* getRightPlayer() const { return mRightPlayer; }
-	int getLeftPlayerScore() { return mLeftPlayerScore; }
+	int getLeftPlayerScore() const { return mLeftPlayerScore; }
 	void setLeftPlayerScore(int score) { mLeftPlayerScore = score; }
-	int getRightPlayerScore() { return mRightPlayerScore; }
+	int getRightPlayerScore() const { return mRightPlayerScore; }
 	void setRightPlayerScore(int score) { mRightPlayerScore = score; }
 
 private:

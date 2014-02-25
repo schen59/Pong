@@ -18,19 +18,6 @@ WorldManager::WorldManager(World *world) {
 }
 
 void WorldManager::doWork() {
-	/*const InputHandler *inputHandler = pongManager->getInputHandler();
-	const AIManager* aiManager = pongManager->getAIManager();
-	if (inputHandler->isKeyDown(OIS::KC_LEFT)) {
-		updateRightPlayer(MOVE_DOWN);
-	} else if (inputHandler->isKeyDown(OIS::KC_RIGHT)) {
-		updateRightPlayer(MOVE_UP);
-	} else {
-		updateRightPlayer(NO_MOVE);
-	}
-	if (inputHandler->isKeyDown(OIS::KC_S)) {
-		mWorld->switchPlayer();
-	}
-	updateLeftPlayer(aiManager->nextMove());*/
 	updateScore();
 	updateObjects();
 }
@@ -45,7 +32,7 @@ void WorldManager::getEvent(const PongManager *pongManager) {
 	} else {
 		updateRightPlayer(NO_MOVE);
 	}
-	if (inputHandler->isKeyDown(OIS::KC_S)) {
+	if (inputHandler->isKeyDown(OIS::KC_S) && !inputHandler->wasKeyDown(OIS::KC_S)) {
 		mWorld->switchPlayer();
 	}
 	updateLeftPlayer(aiManager->nextMove());

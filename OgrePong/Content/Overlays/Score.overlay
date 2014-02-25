@@ -18,7 +18,7 @@ Score
 		
          left 0.05
 	    top 0.0
-         width 0.5
+         width 0.3
          height 1.0
          font_name BlueHighwayBig
          char_height 0.05
@@ -30,9 +30,9 @@ Score
 		{
 		metrics_mode relative
 		
-         left 0.69
+         left 0.9
 	    top 0.0
-         width 0.5
+         width 0.3
          height 1.0
          font_name BlueHighwayBig
          char_height 0.05
@@ -43,45 +43,3 @@ Score
      }
 }
 
-
-
-// Sample/Overlay1   // You can name this anything you like.  
-// {
-    // container Panel(Sample/Overlay1/Panel) //  You can name this anything you like.  The directory-like structure is purely optional
-    // {
-
-		// material BlueSemiTran
-		
-		// left 0.1
-		// top 0.3
-		// width 0.8
-		// height 0.4
-
-		
-	  	// element TextArea(Sample/TextArea1)
-		// {
-		// metrics_mode relative
-		
-         // left 0.1
-		 // top 0.05
-         // font_name BlueHighwayBig
-         // char_height 0.05
-         // colour 1 1 1
-         // caption Sample Text Here
-		// }
-		
-		// element TextArea(Sample/TextArea2)
-		// {
-		// metrics_mode relative
-		
-         // left 0.1
-		 // top 0.2
-         // font_name BlueHighwayBig
-         // char_height 0.05
-         // colour 1 1 1
-         // caption More Sample Text Here
-		// }
-		
-		
-    // }   
-// }
