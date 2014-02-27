@@ -6,23 +6,26 @@
 
 #include "OgreCamera.h"
 #include "OgreColourValue.h"
+#include "OgreOverlayManager.h"
+#include "OgreOverlay.h"
 #include "Ogre.h"
 #include <ois.h>
 
 PongManager::PongManager(Ogre::SceneManager* sceneManager, Ogre::RenderWindow *mainWindow) : mSceneManager(sceneManager), mRenderWindow(mainWindow) {
 	mIsPaused = false;
+	mIsOver = false;
+	createGameOverOverlay();
 }
 
 // On every frame, call the appropriate managers
-bool 
-PongManager::frameStarted(const Ogre::FrameEvent &evt) {
+bool PongManager::frameStarted(const Ogre::FrameEvent &evt) {
 	Ogre::Real time = evt.timeSinceLastFrame;
 	if (time > 0.5) {
 		time = 0.5;
 	}
 	mInputHandler->think(time);
 	think(time);
-	if (!mIsPaused) {
+	if (!mIsPaused && !mIsOver) {
 	    mAIManager->think(time);
 	    mWorld->think(time);
 	}
@@ -36,9 +39,23 @@ void PongManager::think(const Ogre::Real& time) {
 	if (mInputHandler->isKeyDown(OIS::KC_P) && !mInputHandler->wasKeyDown(OIS::KC_P)) {
 		mIsPaused = !mIsPaused;
 	}
-	if (!mIsPaused) {
+	if (mInputHandler->isKeyDown(OIS::KC_RETURN) && !mInputHandler->wasKeyDown(OIS::KC_RETURN)) {
+		startOver();
+	}
+	if (mWorld->isOver()) {
+		mIsOver = true;
+		mGameOverOverlay->show();
+	}
+	if (!mIsPaused && !mIsOver) {
 		mWorld->getEventFrom(this);
 	}
+}
+
+void PongManager::startOver() {
+	mIsPaused = false;
+	mIsOver = false;
+	mGameOverOverlay->hide();
+	mWorld->reset();
 }
 
 void PongManager::createLeftCamera() {
@@ -106,4 +123,9 @@ PongManager::~PongManager() {
 	delete mInputHandler;
 	delete mWorld;
 	delete mAIManager;
+}
+
+void PongManager::createGameOverOverlay() {
+	Ogre::OverlayManager& om = Ogre::OverlayManager::getSingleton();
+	mGameOverOverlay = om.getByName("GameOver");
 }

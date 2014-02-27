@@ -5,7 +5,7 @@
 #include "OgreSceneManager.h"
 
 Paddle::Paddle(Ogre::SceneManager* sceneManager, Ogre::Vector3 dimension) : MotionObject(sceneManager, dimension, 
-																						 PADDLE_ORIGINAL_SPEED, Ogre::Vector3(0, 1, 0)) {
+																						 PADDLE_ORIGINAL_SPEED, PADDLE_DIRECTION_UP) {
 }
 
 void Paddle::load() {

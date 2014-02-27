@@ -44,6 +44,10 @@ public:
 	void setLeftPlayerScore(int score) { mLeftPlayerScore = score; }
 	int getRightPlayerScore() const { return mRightPlayerScore; }
 	void setRightPlayerScore(int score) { mRightPlayerScore = score; }
+	bool isOver();
+	void reset();
+	void updateLevel();
+	int getLevel() { return mLevel; }
 
 private:
 	void createWalls();
@@ -58,6 +62,8 @@ private:
 	void createLeftPaddle();
 	void createRightPaddle();
 	void createOverlay();
+	void createWorldState();
+	void createWorldManager();
 	
 	Ogre::SceneManager *mSceneManager;
 	Ogre::Overlay* mOverlay;
@@ -72,6 +78,8 @@ private:
 	Paddle* mRightPlayer;
 	int mLeftPlayerScore;
 	int mRightPlayerScore;
+	int mLevel;
+	bool mIsSwitched;
 	WorldManager *mWorldManager;
 };
 

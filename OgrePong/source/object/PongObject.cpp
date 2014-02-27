@@ -2,6 +2,7 @@
 #include "OgreSceneNode.h"
 #include "OgreSceneManager.h"
 #include "OgreEntity.h"
+#include "include\common\Properties.h"
 #include "OgreVector3.h"
 
 PongObject::PongObject(Ogre::SceneManager* sceneManager, Ogre::Vector3 dimension) {
@@ -23,7 +24,11 @@ void PongObject::setPosition(Ogre::Vector3 position) {
 }
 
 void PongObject::setScale(Ogre::Vector3 scale) {
-	mSceneNode->scale(scale);
+	mSceneNode->setScale(scale);
+}
+
+Ogre::Vector3 PongObject::getScale() const {
+	return mSceneNode->getScale();
 }
 
 Ogre::Vector3 PongObject::getDimension() const {

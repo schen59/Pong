@@ -1,0 +1,30 @@
+GameOver
+{
+    zorder 200
+	
+    container Panel(GameOverPanel)
+    {
+        metrics_mode relative
+
+        left 0.1
+        top 0.1
+        width 0.6
+        height 0.4
+	   //material BlueSemiTran
+	  
+		element TextArea(center)
+		{
+		metrics_mode relative
+		
+         left 0.2
+	    top 0.2
+         width 0.5
+         height 0.5
+         font_name BlueHighwayBig
+         char_height 0.1
+         colour 1 0 0
+         caption Game Over		
+          }
+     }
+}
+

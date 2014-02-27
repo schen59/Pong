@@ -25,6 +25,7 @@ public:
 	void setPosition(Ogre::Vector3 position);
 	void setScale(Ogre::Vector3 scale);
 	Ogre::Vector3 getDimension() const;
+	Ogre::Vector3 getScale() const;
 	virtual void addToScene();
 	virtual void load() = 0;
 	Ogre::Vector3 getPosition() const;

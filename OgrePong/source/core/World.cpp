@@ -22,13 +22,11 @@
 #include <ois/ois.h>
 
 World::World(Ogre::SceneManager *sceneManager)   : mSceneManager(sceneManager) {
-	mLeftPlayerScore = 0;
-	mRightPlayerScore = 0;
-	mWorldManager = new WorldManager(this);
+	createWorldState();
+	createWorldManager();
 	createWalls();
 	createBall();
 	createPaddles();
-	createPlayers();
 	createOverlay();
 }
 
@@ -43,10 +41,24 @@ World::~World() {
 	delete mWorldManager;
 }
 
+void World::createWorldState() {
+	mLeftPlayerScore = 0;
+	mRightPlayerScore = 0;
+	mIsSwitched = false;
+	mLevel = 1;
+	mRightPlayer = mRightPaddle;
+	mLeftPlayer = mLeftPaddle;
+}
+
+void World::createWorldManager() {
+	mWorldManager = new WorldManager(this);
+}
+
 void World::switchPlayer() {
 	Paddle *tmpPlayer = mRightPlayer;
 	mRightPlayer = mLeftPlayer;
 	mLeftPlayer = tmpPlayer;
+	mIsSwitched = !mIsSwitched;
 }
 
 void World::createPaddles() {
@@ -139,4 +151,34 @@ void World::think(const Ogre::Real& time) {
 
 void World::getEventFrom(PongManager *pongManager) {
 	mWorldManager->getEvent(pongManager);
+}
+
+bool World::isOver() {
+	if (!mIsSwitched) {
+		return mLeftPlayerScore == 12;
+	} else {
+		return mRightPlayerScore == 12;
+	}
+}
+
+void World::reset() {
+	createWorldState();
+	mBall->reset();
+	mLeftPaddle->reset();
+	mRightPaddle->reset();
+}
+
+void World::updateLevel() {
+	if (mRightPlayerScore == 12 || mLeftPlayerScore == 12) {
+		if (!isOver()) {
+			mLevel++;
+		    mLeftPlayerScore = 0;
+		    mRightPlayerScore = 0;
+			Ogre::Vector3 newScale = mRightPaddle->getScale() - PADDLE_SCALE_DEC_STEP;
+			if (newScale.y > PADDLE_MIN_SCALE.y) {
+			    mRightPaddle->setScale(mRightPaddle->getScale() - PADDLE_SCALE_DEC_STEP);
+			}
+		}
+	}
+	
 }

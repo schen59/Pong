@@ -18,7 +18,8 @@ public:
     void think(float time);
 
 private:
-	void calculateNextMove();
+	void calculateNextMoveSimple();
+	void calculateNextMoveGreedy();
 
 	World *mWorld;
 	PaddleMove mNextMove;

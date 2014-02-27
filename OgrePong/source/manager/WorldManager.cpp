@@ -19,6 +19,7 @@ WorldManager::WorldManager(World *world) {
 
 void WorldManager::doWork() {
 	updateScore();
+	updateLevel();
 	updateObjects();
 }
 
@@ -117,6 +118,16 @@ void WorldManager::updateScore() {
 	te->setCaption(score);
 }
 
+void WorldManager::updateLevel() {
+	mWorld->updateLevel();
+	int level = mWorld->getLevel();
+	Ogre::OverlayManager& om = Ogre::OverlayManager::getSingleton();
+	Ogre::TextAreaOverlayElement *te = (Ogre::TextAreaOverlayElement *) om.getOverlayElement("level");
+	char levelCaption[25];
+	sprintf(levelCaption, "Level : %i", level);
+	te->setCaption(levelCaption);
+}
+
 void WorldManager::updateObjects() {
 	Ball *ball = mWorld->getBall();
 	Paddle *leftPlayer = mWorld->getLeftPlayer();
@@ -160,9 +171,9 @@ void WorldManager::putBallAtPaddleEdge() {
 void WorldManager::updateLeftPlayer(PaddleMove direction) {
 	Paddle *leftPlayer = mWorld->getLeftPlayer();
 	if (direction == MOVE_DOWN && !isLeftPlayerHitBottomWall()) {
-		leftPlayer->setDirection(Ogre::Vector3(0, -1, 0));
+		leftPlayer->setDirection(PADDLE_DIRECTION_DOWN);
 	} else if (direction == MOVE_UP && !isLeftPlayerHitTopWall()) {
-		leftPlayer->setDirection(Ogre::Vector3(0, 1, 0));
+		leftPlayer->setDirection(PADDLE_DIRECTION_UP);
 	} else {
 		leftPlayer->stop();
 	}

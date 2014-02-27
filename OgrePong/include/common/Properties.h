@@ -23,6 +23,8 @@ extern const Ogre::Vector3 LEFT_PADDLE_ORIGINAL_POSITION;
 extern const Ogre::Vector3 PADDLE_MOVE_UP;
 extern const Ogre::Vector3 PADDLE_MOVE_DOWN;
 extern const Ogre::Vector3 PADDLE_ORIGINAL_SPEED;
+extern const Ogre::Vector3 PADDLE_DIRECTION_UP;
+extern const Ogre::Vector3 PADDLE_DIRECTION_DOWN;
 
 extern const Ogre::Vector3 BALL_MOVE_RIGHT_BOTTOM;
 extern const Ogre::Vector3 BALL_ORIGINAL_DIMENSION;
@@ -35,5 +37,8 @@ extern const Ogre::Vector3 VERTICAL_REVERSE_FACTOR;
 
 extern const Ogre::Vector3 SPEED_INC_STEP;
 extern const Ogre::Vector3 MAX_SPEED;
+extern const Ogre::Vector3 PADDLE_SCALE_DEC_STEP;
+
+extern const Ogre::Vector3 PADDLE_MIN_SCALE;
 
 #endif

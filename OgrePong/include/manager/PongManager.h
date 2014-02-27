@@ -9,6 +9,7 @@ namespace Ogre
 	class RenderWindow;
 	class Camera;
 	class SceneManager;
+	class Overlay;
 }
 
 class InputHandler;
@@ -43,17 +44,21 @@ private:
 	void createRightCamera();
 	void createLeftViewPort();
 	void createRightViewPort();
+	void createGameOverOverlay();
 	void think(const Ogre::Real& time);
+	void startOver();
 
 	Ogre::SceneManager* mSceneManager;
 	InputHandler *mInputHandler;
 	AIManager *mAIManager;
 	World *mWorld;
+	Ogre::Overlay *mGameOverOverlay;
     Ogre::Camera *mLeftCamera;
 	Ogre::Camera *mRightCamera;
 	Ogre::RenderWindow *mRenderWindow;
 	bool mKeepGoing;
 	bool mIsPaused;
+	bool mIsOver;
 };
 
 #endif

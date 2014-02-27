@@ -34,6 +34,7 @@ private:
 	void putBallAtLeftPaddleEdge();
 	void putBallAtRightPaddleEdge();
 	void updateScore();
+	void updateLevel();
 
 	World *mWorld;
 };

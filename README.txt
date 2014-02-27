@@ -34,3 +34,8 @@ human player.
 
     Support adaptively change ball sppeed and paddle sppeed according to the number of 
 successfully hits in a row. 
+
+    Support level up, when the human player wins 12 scores it will level up to the next level and the paddle size
+will shrink a lit bit as well.
+    
+    Support game over. when the AI play wins 12 score, the game will over, you can hit 'Return' to start over again.
